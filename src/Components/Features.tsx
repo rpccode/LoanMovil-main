@@ -48,6 +48,14 @@ const Features = () => {
             backgroundColor: COLORS.lightGreen, // Amarillo claro
             description: "Loan"
         },
+        {
+            id: 6,
+            icon: icons.pagar,
+            color: COLORS.lightGreen, // Amarillo
+            backgroundColor: COLORS.darkGreen, // Amarillo claro
+            description: "Pay"
+        },
+       
        
       
     ];

@@ -2,13 +2,15 @@ import {View, Text, Image, TouchableOpacity} from 'react-native';
 import React from 'react';
 import Features from '../../Components/Features';
 import CreditCard from '../../Components/CreditCard';
-import HomeHeader from '../../Components/HomeHeader';
-import LinearGradient from 'react-native-linear-gradient';
 import {COLORS, FONTS, SIZES, ThemeStyles} from '../../Configs/constants/theme';
-import Dashboard from '../../Components/Dashboard';
 import {icons} from '../../Configs';
+import { useLoans } from '../../hooks';
+import { formatCurrency } from '../../helpers/utils';
 
 const HomeScreens = () => {
+  const {balanceActual, totalCobrado, totalIntereses, totalPrestado} = useLoans()
+  console.log(totalCobrado)
+  console.log(totalPrestado)
   return (
     <View style={{...ThemeStyles.containerr, backgroundColor: COLORS.base}}>
       <View
@@ -78,11 +80,11 @@ const HomeScreens = () => {
               justifyContent: 'space-between',
               alignItems: 'center',
             }}>
-            <Text style={{...FONTS.largeTitle, color: COLORS.darkBlue}}>
-              $12,000.00
+            <Text style={{...FONTS.mediumTitle, color: COLORS.darkBlue}}>
+              {formatCurrency(balanceActual)}
             </Text>
 
-            <TouchableOpacity
+            {/* <TouchableOpacity
               style={{
                 backgroundColor: COLORS.navyBlue,
                 padding: SIZES.padding ,
@@ -93,7 +95,7 @@ const HomeScreens = () => {
               }}
               onPress={() => console.log('Balance clicked')}>
                 <Text style={{...FONTS.body4, color: COLORS.white}}>USD</Text>
-              </TouchableOpacity>
+              </TouchableOpacity> */}
           </View>
         </View>
 
@@ -110,8 +112,8 @@ const HomeScreens = () => {
           marginBottom: SIZES.padding,
         }}
         >
-        <CreditCard titleCard={'Prestado'} cardNumber={'4000'} expires={'12/02/24'} colorText={COLORS.green}  />
-        <CreditCard titleCard={'Cobrado'} cardNumber={'8000'} expires={'12/02/24'} colorText={COLORS.blue}  />
+        <CreditCard titleCard={'Prestado'} cardNumber={totalPrestado.toString()} expires={'12/02/24'} colorText={COLORS.green}  />
+        <CreditCard titleCard={'Cobrado'} cardNumber={totalCobrado.toString()} expires={'12/02/24'} colorText={COLORS.blue}  />
         </View>
 
         </View>

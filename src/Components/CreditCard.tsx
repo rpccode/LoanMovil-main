@@ -1,47 +1,42 @@
 import React from 'react';
-import { View, Text, StyleSheet, Dimensions } from 'react-native';
-import { COLORS } from '../Configs'; // Asegúrate de importar tu paleta de colores
-import { formatCurrency } from '../helpers/utils';
+import {View, Text, StyleSheet, Dimensions} from 'react-native';
+import {COLORS} from '../Configs'; // Asegúrate de importar tu paleta de colores
+import {formatCurrency} from '../helpers/utils';
 
-const { width: SCREEN_WIDTH } = Dimensions.get('window');
-
+const {width: SCREEN_WIDTH} = Dimensions.get('window');
 
 type crediCardProp = {
   titleCard: string;
   cardNumber: string;
   expires: string;
   colorText: string;
-}
+};
 
 const CreditCard = ({
   titleCard,
   cardNumber,
   expires,
-  colorText
-}:crediCardProp) => {
+  colorText,
+}: crediCardProp) => {
   return (
-    <View
-      style={styles.creditCard}
-    >
-       <View style={styles.cardHeader}>
-        <Text style={{
-          fontSize: 18,
-          fontWeight: 'bold',
-          color: COLORS.darkBlue, 
-          textTransform: 'uppercase',
-          
-        } } >
-          
+    <View style={styles.creditCard}>
+      <View style={styles.cardHeader}>
+        <Text
+          style={{
+            fontSize: 18,
+            fontWeight: 'bold',
+            color: COLORS.darkBlue,
+            textTransform: 'uppercase',
+          }}>
           {titleCard}
-        
-
         </Text>
       </View>
       <View style={styles.cardBody}>
-        <Text style={{...styles.cardNumber, fontSize: 18, color: colorText}}>${formatCurrency(parseInt(cardNumber))}</Text>
+        <Text style={{...styles.cardNumber, fontSize: 14, color: colorText}}>
+          {formatCurrency(parseInt(cardNumber))}
+        </Text>
         <Text style={styles.expires}>{expires}</Text>
       </View>
-     
     </View>
   );
 };
@@ -54,7 +49,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     backgroundColor: COLORS.base, // Fondo blanco para contraste con el degradado
     shadowColor: COLORS.black, // Sombra en negro según tu paleta
-    shadowOffset: { width: 0, height: 4 },
+    shadowOffset: {width: 0, height: 4},
     shadowOpacity: 0.1,
     shadowRadius: 4,
     elevation: 5,
@@ -68,11 +63,11 @@ const styles = StyleSheet.create({
     height: 40,
   },
   cardBody: {
-    paddingHorizontal: 16,
+    paddingHorizontal: 14,
   },
   cardNumber: {
     marginBottom: 15,
-     // Texto gris según tu paleta
+    // Texto gris según tu paleta
   },
   cardHolder: {
     fontSize: 14,

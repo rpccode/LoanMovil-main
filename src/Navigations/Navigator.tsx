@@ -7,6 +7,7 @@ import {  LoanConfirmationScreen, LoanDetailsScreen, PersonSelectionScreen, Wall
 import CustomerScreens from '../Modules/customers/screens/CustomerScreens';
 import LoanInfoScreens from '../Modules/loan/screens/LoanInfoScreens';
 import BillScreens from '../Modules/loan/screens/BillScreens';
+import PaymentScreens from '../Modules/payment/screens/PaymentScreens';
 
 
 const Stack = createStackNavigator();
@@ -32,6 +33,9 @@ export const Navigator = () => {
         <Stack.Screen name="LoanDetails" component={LoanDetailsScreen} />
         <Stack.Screen name="LoanConfirmation" component={LoanConfirmationScreen} />
         <Stack.Screen name="LoanInfo" component={LoanInfoScreens} />
+        <Stack.Screen name="Pay" component={PaymentScreens} />
+
+
         
         {/* Ensure LoanDetails screen uses correct component and props */}
         {/* <Stack.Screen

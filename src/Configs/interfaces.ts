@@ -84,4 +84,50 @@ interface TipoPersona {
   descripcion?: string;
   estado: number;
 }
-export type {Empresa, Estado, Persona, Prestamo, TipoPersona};
+
+
+type loanInfo = {
+  person: Persona,
+  loan: Prestamo,
+  dues: IDetallePrestamo,
+  diasAtraso?: number;
+
+}
+interface DetallePago {
+  idDetalle_pago: number;
+  idCouta: number;
+  idTipoPago: number;
+  fecha_pago: Date;
+  estado: number;
+  idPrestamo: string;
+  mont_pagado: number;
+  idUsuario: string;
+  mont_cuota: number;
+  idPago?: string;
+}
+
+interface Pago {
+  idPago: number;
+  idEmpresa: string;
+  idPrestamo: string;
+  idUsuario: string;
+  num_pagos: number;
+  total_capital: number;
+  total_interes: number;
+  mont_prestamo: number;
+  balance: number;
+  estado: number;
+}
+
+
+
+
+export enum tabPago {
+   'today', 'Para Hoy',
+  'overdue', 'Vencidas',
+  'unpaid',  'No Pagadas',
+
+
+}
+
+export type {Empresa, Estado, Persona, Prestamo, TipoPersona, loanInfo,Pago,DetallePago};

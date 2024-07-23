@@ -104,10 +104,88 @@ export const TipoPersonaSchema: Realm.ObjectSchema = {
   properties: {
     idTipoPersona: 'int',
     nombre: 'string',
-    descripcion: 'string?',
     estado: 'int',
   },
 };
+
+export const MonedaSchema: Realm.ObjectSchema = {
+  name: 'Moneda',
+  primaryKey: 'idMoneda',
+  properties: {
+    idMoneda: 'int',
+    nombre: 'string',
+    estado: 'int',
+    abreviatura: 'string',
+  },
+};
+
+export const TasaMonedaSchema: Realm.ObjectSchema = {
+  name: 'TasaMoneda',
+  primaryKey: 'idTasaMoneda',
+  properties: {
+    idTasaMoneda: 'int',
+    idMoneda: 'int',
+    tasa_actual: 'float',
+    tasa_anterior: 'float',
+    fecha_registro: 'date',
+    fecha_modificacion: 'date',
+  },
+};
+
+export const DetallePagoSchema: Realm.ObjectSchema = {
+  name: 'DetallePago',
+  primaryKey: 'idDetalle_pago',
+  properties: {
+    idDetalle_pago: 'int',
+    idCouta: 'int',
+    idTipoPago: 'int',
+    fecha_pago: 'date',
+    estado: 'int',
+    idPrestamo: 'string',
+    mont_pagado: 'float',
+    idUsuario: 'string',
+    mont_cuota: 'float',
+    idPago: 'string?',
+  },
+};
+
+export const PagoSchema: Realm.ObjectSchema = {
+  name: 'Pago',
+  primaryKey: 'idPago',
+  properties: {
+    idPago: 'int',
+    idEmpresa: 'string',
+    idPrestamo: 'string',
+    idUsuario: 'string',
+    num_pagos: 'int',
+    total_capital: 'float',
+    total_interes: 'float',
+    mont_prestamo: 'float',
+    balance: 'float',
+    estado: 'int',
+  },
+};
+
+export const TipoPagoSchema: Realm.ObjectSchema = {
+  name: 'TipoPago',
+  primaryKey: 'idTipoPago',
+  properties: {
+    idTipoPago: 'int',
+    nombre: 'string',
+    descripcion: 'string?',
+  },
+};
+
+export const MonedaEmpresaSchema: Realm.ObjectSchema = {
+  name: 'MonedaEmpresa',
+  primaryKey: 'idMonedaEmpresa',
+  properties: {
+    idMonedaEmpresa: 'int',
+    idEmpresa: 'string',
+    idTasaMoneda: 'int',
+  },
+};
+
 
 // Exporta la configuración de la base de datos
 export const realmConfig = {
@@ -118,9 +196,16 @@ export const realmConfig = {
     PrestamoSchema,
     DetallePrestamo,
     TipoPersonaSchema,
+    MonedaSchema,
+    TasaMonedaSchema,
+    DetallePagoSchema,
+    PagoSchema,
+    TipoPagoSchema,
   ],
   schemaVersion: 3,
 };
+
+
 
 export const initializeDatabase = async () => {
   const realm = new Realm(realmConfig);

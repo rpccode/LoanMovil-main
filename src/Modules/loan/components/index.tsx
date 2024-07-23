@@ -1,13 +1,14 @@
-import DuesListItemView from './DuesListItemView';
+
 import LoanDetailsTable from './LoanDetailsTable';
-import PaymentOptionsBottomSheet from './PaymentOptionsBottomSheet';
+
+import { LoanList } from './LoanList';
 
 
 
 
 
 export {
-    DuesListItemView,
+
     LoanDetailsTable,
-    PaymentOptionsBottomSheet
+    LoanList,
 }

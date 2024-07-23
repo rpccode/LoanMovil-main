@@ -14,6 +14,7 @@ import {COLORS, FONTS, loanWhitDues} from '../../../Configs';
 import {calcularDetallesCuotas} from '../../../helpers';
 import {ThemeStyles} from '../../../Configs/constants/theme';
 import { CustomHeader } from '../../../Components';
+import { generateClientLoanNumber, generateNewClientCode } from '../../../helpers/utils';
 
 const LoanDetailsScreen = ({navigation, route}) => {
   const [loanDetails, setLoanDetails] = useState<loanWhitDues | null>(null);
@@ -40,6 +41,8 @@ const LoanDetailsScreen = ({navigation, route}) => {
   };
 
   const handleCalculateLoan = async () => {
+
+    const clientCode1 = generateNewClientCode();
     setLoading(true);
 
     try {
@@ -51,7 +54,7 @@ const LoanDetailsScreen = ({navigation, route}) => {
           cant_coutas: parseInt(formData.Dues, 10),
           idEmpresa: '37ee7232-f4c9-41a0-ba75-076ffb4e6e9a',
           idPersona: personId,
-          num_prestamo: '',
+          num_prestamo: generateClientLoanNumber(clientCode1),
           monto_aprobado: 0,
           tasa_mora: 0,
           tipo_prestamo: parseInt(formData.Frequency),

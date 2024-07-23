@@ -23,11 +23,18 @@ const download = require("../assets/icons/download.png");
 const downloading = require("../assets/icons/downloading.png");
 const loan = require("../assets/icons/prestamo.png");
 const loan2 = require("../assets/icons/pedir-prestado.png");
+const pagar = require("../assets/icons/pagar.png");
+const luz = require("../assets/icons/luz.png");
+const comprobar = require("../assets/icons/comprobar.png");
+
 
 
 const wallet = require("../assets/icons/wallet.png");
 
 export default {
+    luz,
+    comprobar,
+    pagar,
     filter_list,
     publish,
     more_vert,

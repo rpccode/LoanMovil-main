@@ -5,6 +5,7 @@ import { useAnimation } from './useAnimation';
 import useSwichForm from './useSwichForm';
 import { useCustomerFilters } from './useCustomerFilters';
 import { useCustomerModal } from './useCustomerModal';
+import { useLoans } from './useLoans';
 
 
 export {
@@ -14,5 +15,6 @@ export {
     useAnimation,
     useSwichForm,
     useCustomerFilters,
-    useCustomerModal
+    useCustomerModal,
+    useLoans
 }
